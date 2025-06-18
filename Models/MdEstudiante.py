@@ -30,7 +30,7 @@ class MdEstudiante(MdUsuario):
         return objResult
     
     def ObtenerTodos() -> List[Self]:
-        cursor = ClDataBase.AbrirConexion()
+        cursor = ClDataBase.OpenConnection()
         cursor.execute("SELECT * FROM MdEstudiante")
         cursorData = cursor.fetchall()
         listResult = list()
@@ -48,14 +48,14 @@ class MdEstudiante(MdUsuario):
     
     def ObtenerImg(self) -> bytearray:
         cursor = ClDataBase.OpenConnection()
-        cursor.execute(f"SELECT * FROM MdEstudiante WHERE Id={self.id}")
+        cursor.execute(f"SELECT * FROM MdEstudiante WHERE Id={self.Id}")
         objData = cursor.fetchone()
         ClDataBase.CloseConnection(cursor)
         return objData.Foto
     
-    #def ObtenerVector(self) -> bytearray:
+    def ObtenerVector(self) -> bytearray:
         cursor = ClDataBase.OpenConnection()
-        cursor.execute(f"SELECT * FROM MdEstudiante WHERE Id={self.id}")
+        cursor.execute(f"SELECT * FROM MdEstudiante WHERE Id={self.Id}")
         objData = cursor.fetchone()
         ClDataBase.CloseConnection(cursor)
         return objData.Vector

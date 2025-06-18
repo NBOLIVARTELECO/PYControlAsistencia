@@ -5,9 +5,10 @@ sys.path.append("Repository")
 from ClDataBase import ClDataBase
 from EnEnum import EnTipoDocumento
 from MdInicioSesion import MdInicioSesion
+from MdUsuario import MdUsuario
 
 
-class MdAdministrador():
+class MdAdministrador(MdUsuario):
     def __init__(self, tipoDocumento, documento: str) -> None:
         super().__init__(tipoDocumento, documento)
 
@@ -65,7 +66,7 @@ class MdAdministrador():
             SegundoNombre= '{self.SegundoNombre}', 
             PrimerApellido= '{self.PrimerApellido}', 
             SegundoApellido= '{self.SegundoApellido}', 
-            Email= '{self.Email}''
+            Email= '{self.Email}'
             WHERE Id= {self.Id}"""  
         cursor.execute(strUpdate)
         cursor.commit()

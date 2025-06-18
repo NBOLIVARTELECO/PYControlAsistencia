@@ -17,7 +17,7 @@ class MdDocente(MdUsuario):
         super().__init__(tipoDocumento, documento)
 
     def ObtenerTodos() -> List[Self]:
-        cursor = ClDataBase.AbrirConexion()
+        cursor = ClDataBase.OpenConnection()
         cursor.execute("SELECT * FROM MdDocente")
         cursorData = cursor.fetchall()
         listResult = list()
